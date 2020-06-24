@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ZsqAbp.Blog.Web": {
+    "ZsqAbp.Blog.HttpApi.Hosting": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

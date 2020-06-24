@@ -89,6 +89,20 @@
             标签Id
             </summary>
         </member>
+        <member name="M:ZsqAbp.Blog.Domain.Blog.Repositories.IPostTagRepository.BulkInsertAsync(System.Collections.Generic.IEnumerable{ZsqAbp.Blog.Domain.Blog.PostTag})">
+            <summary>
+            批量插入
+            </summary>
+            <param name="postTags"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZsqAbp.Blog.Domain.Blog.Repositories.ITagRepository.BulkInsertAsync(System.Collections.Generic.IEnumerable{ZsqAbp.Blog.Domain.Blog.Tag})">
+            <summary>
+            批量插入
+            </summary>
+            <param name="tags"></param>
+            <returns></returns>
+        </member>
         <member name="T:ZsqAbp.Blog.Domain.Blog.Tag">
             <summary>
             Tag
