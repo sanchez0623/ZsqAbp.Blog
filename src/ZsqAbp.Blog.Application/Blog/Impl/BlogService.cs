@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ZsqAbp.Blog.Application.Contracts.Blog;
 using ZsqAbp.Blog.Domain.Blog;
 using ZsqAbp.Blog.Domain.Blog.Repositories;
+using ZsqAbp.Blog.ToolKits.Base;
 
 namespace ZsqAbp.Blog.Application.Blog.Impl
 {
@@ -15,8 +15,10 @@ namespace ZsqAbp.Blog.Application.Blog.Impl
             _postRepository = postRepository;
         }
 
-        public async Task<bool> InsertPostAsync(PostDto dto)
+        public async Task<ServiceResult<string>> InsertPostAsync(PostDto dto)
         {
+            var result = new ServiceResult<string>();
+
             var entity = new Post
             {
                 Title = dto.Title,
@@ -29,19 +31,35 @@ namespace ZsqAbp.Blog.Application.Blog.Impl
             };
 
             var post = await _postRepository.InsertAsync(entity);
-            return post != null;
+            if (post == null)
+            {
+                result.IsFailed("添加失败");
+                return result;
+            }
+
+            result.IsSuccess("添加成功");
+            return result;
         }
 
-        public async Task<bool> DeletePostAsync(int id)
+        public async Task<ServiceResult> DeletePostAsync(int id)
         {
+            var result = new ServiceResult();
+
             await _postRepository.DeleteAsync(id);
 
-            return true;
+            return result;
         }
 
-        public async Task<bool> UpdatePostAsync(int id, PostDto dto)
+        public async Task<ServiceResult<string>> UpdatePostAsync(int id, PostDto dto)
         {
+            var result = new ServiceResult<string>();
+
             var post = await _postRepository.GetAsync(id);
+            if (post == null)
+            {
+                result.IsFailed("文章不存在");
+                return result;
+            }
 
             post.Title = dto.Title;
             post.Author = dto.Author;
@@ -53,14 +71,23 @@ namespace ZsqAbp.Blog.Application.Blog.Impl
 
             await _postRepository.UpdateAsync(post);
 
-            return true;
+
+            result.IsSuccess("更新成功");
+            return result;
         }
 
-        public async Task<PostDto> GetPostAsync(int id)
+        public async Task<ServiceResult<PostDto>> GetPostAsync(int id)
         {
-            var post = await _postRepository.GetAsync(id);
+            var result = new ServiceResult<PostDto>();
 
-            return new PostDto
+            var post = await _postRepository.GetAsync(id);
+            if (post == null)
+            {
+                result.IsFailed("文章不存在");
+                return result;
+            }
+
+            var dto = new PostDto
             {
                 Title = post.Title,
                 Author = post.Author,
@@ -70,6 +97,9 @@ namespace ZsqAbp.Blog.Application.Blog.Impl
                 CategoryId = post.CategoryId,
                 CreateTime = post.CreateTime
             };
+
+            result.IsSuccess(dto);
+            return result;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Mvc;
 using ZsqAbp.Blog.Application.Blog;
 using ZsqAbp.Blog.Application.Contracts.Blog;
+using ZsqAbp.Blog.ToolKits.Base;
 
 namespace ZsqAbp.Blog.HttpApi.Controllers
 {
@@ -24,7 +25,7 @@ namespace ZsqAbp.Blog.HttpApi.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<bool> InsertPostAsync([FromBody] PostDto dto)
+        public async Task<ServiceResult<string>> InsertPostAsync([FromBody] PostDto dto)
         {
             return await _blogService.InsertPostAsync(dto);
         }
@@ -35,7 +36,7 @@ namespace ZsqAbp.Blog.HttpApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task<bool> DeletePostAsync([Required] int id)
+        public async Task<ServiceResult> DeletePostAsync([Required] int id)
         {
             return await _blogService.DeletePostAsync(id);
         }
@@ -47,7 +48,7 @@ namespace ZsqAbp.Blog.HttpApi.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<bool> UpdatePostAsync([Required] int id, [FromBody] PostDto dto)
+        public async Task<ServiceResult<string>> UpdatePostAsync([Required] int id, [FromBody] PostDto dto)
         {
             return await _blogService.UpdatePostAsync(id, dto);
         }
@@ -58,7 +59,7 @@ namespace ZsqAbp.Blog.HttpApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<PostDto> GetPostAsync([Required] int id)
+        public async Task<ServiceResult<PostDto>> GetPostAsync([Required] int id)
         {
             return await _blogService.GetPostAsync(id);
         }
