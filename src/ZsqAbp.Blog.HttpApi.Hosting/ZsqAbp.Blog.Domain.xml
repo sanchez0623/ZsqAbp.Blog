@@ -143,5 +143,10 @@
             ConnectionStrings
             </summary>
         </member>
+        <member name="P:ZsqAbp.Blog.Domain.Configurations.AppSettings.ApiVersion">
+            <summary>
+            ApiVersion
+            </summary>
+        </member>
     </members>
 </doc>

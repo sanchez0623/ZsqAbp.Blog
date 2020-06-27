@@ -5,11 +5,13 @@ using Volo.Abp.AspNetCore.Mvc;
 using ZsqAbp.Blog.Application.Blog;
 using ZsqAbp.Blog.Application.Contracts.Blog;
 using ZsqAbp.Blog.ToolKits.Base;
+using static ZsqAbp.Blog.Domain.Shared.ZsqAbpBlogConsts;
 
 namespace ZsqAbp.Blog.HttpApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [ApiExplorerSettings(GroupName = Grouping.GroupName_v1)]
     public class BlogController : AbpController
     {
         private readonly IBlogService _blogService;
