@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using static ZsqAbp.Blog.Domain.Shared.ZsqAbpBlogConsts;
 
 namespace ZsqAbp.Blog.HttpApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     [ApiExplorerSettings(GroupName = Grouping.GroupName_v1)]

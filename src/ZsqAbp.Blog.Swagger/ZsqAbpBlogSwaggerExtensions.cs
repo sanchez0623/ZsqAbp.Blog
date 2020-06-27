@@ -100,7 +100,7 @@ namespace ZsqAbp.Blog.Swagger
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 };
-                options.AddSecurityDefinition("JWT", security);
+                options.AddSecurityDefinition("oauth2", security);
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement { { security, new List<string>() } });
                 options.OperationFilter<AddResponseHeadersFilter>();
                 options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
