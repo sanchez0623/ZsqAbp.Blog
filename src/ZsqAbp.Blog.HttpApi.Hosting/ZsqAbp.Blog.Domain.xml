@@ -153,6 +153,11 @@
             GitHub
             </summary>
         </member>
+        <member name="P:ZsqAbp.Blog.Domain.Configurations.AppSettings.Caching.RedisConnectionString">
+            <summary>
+            RedisConnectionString
+            </summary>
+        </member>
         <member name="F:ZsqAbp.Blog.Domain.Configurations.GitHubConfig.API_Authorize">
             <summary>
             GET请求，跳转GitHub登录界面，获取用户授权，得到code
