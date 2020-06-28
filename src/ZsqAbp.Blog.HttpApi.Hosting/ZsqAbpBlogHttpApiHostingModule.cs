@@ -12,6 +12,7 @@ using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.ExceptionHandling;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
+using ZsqAbp.Blog.BackgroundJobs;
 using ZsqAbp.Blog.Domain.Configurations;
 using ZsqAbp.Blog.EntityFrameworkCore;
 using ZsqAbp.Blog.HttpApi;
@@ -24,11 +25,12 @@ using ZsqAbp.Blog.ToolKits.Extensions;
 namespace ZsqAbp.Blog.Web
 {
     [DependsOn(
-       typeof(AbpAspNetCoreMvcModule),
-       typeof(AbpAutofacModule),
-       typeof(ZsqAbpBlogHttpApiModule),
-       typeof(ZsqAbpBlogSwaggerModule),
-       typeof(ZsqAbpBlogFrameworkCoreModule)
+        typeof(AbpAspNetCoreMvcModule),
+        typeof(AbpAutofacModule),
+        typeof(ZsqAbpBlogHttpApiModule),
+        typeof(ZsqAbpBlogSwaggerModule),
+        typeof(ZsqAbpBlogFrameworkCoreModule),
+        typeof(ZsqAbpBlogBackgroundJobsModule)
     )]
     public class ZsqAbpBlogHttpApiHostingModule : AbpModule
     {

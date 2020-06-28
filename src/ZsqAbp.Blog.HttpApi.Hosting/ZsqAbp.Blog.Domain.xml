@@ -158,6 +158,11 @@
             RedisConnectionString
             </summary>
         </member>
+        <member name="T:ZsqAbp.Blog.Domain.Configurations.AppSettings.Hangfire">
+            <summary>
+            Hangfire
+            </summary>
+        </member>
         <member name="F:ZsqAbp.Blog.Domain.Configurations.GitHubConfig.API_Authorize">
             <summary>
             GET请求，跳转GitHub登录界面，获取用户授权，得到code
