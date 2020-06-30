@@ -2,6 +2,7 @@
 using Volo.Abp;
 using ZsqAbp.Blog.Domain.Blog;
 using ZsqAbp.Blog.Domain.Shared;
+using ZsqAbp.Blog.Domain.Wallpaper;
 using static ZsqAbp.Blog.Domain.Shared.ZsqAbpBlogDbConsts;
 
 namespace ZsqAbp.Blog.EntityFrameworkCore
@@ -55,6 +56,17 @@ namespace ZsqAbp.Blog.EntityFrameworkCore
                 b.HasKey(x => x.Id);
                 b.Property(x => x.Title).HasMaxLength(20).IsRequired();
                 b.Property(x => x.LinkUrl).HasMaxLength(100).IsRequired();
+            });
+
+            builder.Entity<Wallpaper>(b =>
+            {
+                b.ToTable(ZsqAbpBlogConsts.DbTablePrefix + DbTableName.Wallpapers);
+                b.HasKey(x => x.Id);
+                b.Property(x => x.Id).ValueGeneratedOnAdd();
+                b.Property(x => x.Url).HasMaxLength(200).IsRequired();
+                b.Property(x => x.Title).HasMaxLength(100).IsRequired();
+                b.Property(x => x.Type).HasColumnType("int").IsRequired();
+                b.Property(x => x.CreateTime).HasColumnType("datetime").IsRequired();
             });
         }
     }

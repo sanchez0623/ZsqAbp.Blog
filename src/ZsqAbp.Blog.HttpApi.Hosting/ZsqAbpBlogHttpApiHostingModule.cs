@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -109,6 +110,15 @@ namespace ZsqAbp.Blog.Web
 
             // 路由
             app.UseRouting();
+
+            app.UseHsts();
+            app.UseCors();
+            app.UseHttpsRedirection();
+            //转发将标头代理到当前请求，配合 Nginx 使用，获取用户真实IP
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             // 异常处理中间件
             app.UseMiddleware<ExceptionHandlerMiddleware>();

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 using ZsqAbp.Blog.EntityFrameworkCore.DbMigrations.EntityFrameworkCore;
@@ -9,9 +10,10 @@ using ZsqAbp.Blog.EntityFrameworkCore.DbMigrations.EntityFrameworkCore;
 namespace ZsqAbp.Blog.Migrations
 {
     [DbContext(typeof(ZsqAbpBlogMigrationsDbContext))]
-    partial class ZsqAbpBlogMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200629094339_Add Wallpaper entity")]
+    partial class AddWallpaperentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

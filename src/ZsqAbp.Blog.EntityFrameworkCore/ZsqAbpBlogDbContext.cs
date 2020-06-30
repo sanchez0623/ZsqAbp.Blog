@@ -2,6 +2,7 @@
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using ZsqAbp.Blog.Domain.Blog;
+using ZsqAbp.Blog.Domain.Wallpaper;
 
 namespace ZsqAbp.Blog.EntityFrameworkCore
 {
@@ -21,6 +22,8 @@ namespace ZsqAbp.Blog.EntityFrameworkCore
         public DbSet<PostTag> PostTags { get; set; }
 
         public DbSet<FriendLink> FriendLinks { get; set; }
+
+        public DbSet<Wallpaper> Wallpapers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
